@@ -13,9 +13,7 @@ def getFiles(path):
 jingtian = fare.load_image_file("images/liyitong2.jpg")
 source = fare.face_encodings(jingtian)[0]
 
-
 files = getFiles("/home/references")
-
 
 fmat = ''
 

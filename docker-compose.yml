@@ -1,0 +1,21 @@
+version: "2"
+services:
+  main:
+    image: ndaidong/farecogn
+    volumes:
+      - .:/home:z
+    ports:
+      - "8085:8085"
+    environment:
+      - APP_ENV=development
+      - APP_PORT=8085
+    # restart: always
+    entrypoint: |
+      bash -c 'bash -s <<EOF
+      cd /home
+      pip install virtualenv
+      virtualenv --system-site-packages venv
+      source venv/bin/activate
+      pip install -r requirements.txt
+      python index.py
+      EOF'
