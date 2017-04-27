@@ -1,6 +1,9 @@
+''' *** '''
+# start app
+
 from app import app
 
-port = app.config['PORT']
-debug = app.config['DEBUG']
+PORT = app.config['PORT']
+DEBUG = app.config['DEBUG']
 
-app.run(host='0.0.0.0', port=port, debug=debug)
+app.run(host='0.0.0.0', port=PORT, debug=DEBUG)

@@ -10,4 +10,5 @@
   .container .panel {
     max-width: 800px;
     margin: auto;
+    border: none;
   }

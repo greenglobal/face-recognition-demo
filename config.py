@@ -1,3 +1,6 @@
+''' *** '''
+# config
+
 from os import environ
 
 ENV = environ['APP_ENV']
