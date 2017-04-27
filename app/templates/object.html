@@ -3,10 +3,45 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="https://rawgit.com/picturepan2/spectre/master/docs/dist/spectre.min.css">
+    {% assets "common_css" %}<link rel="stylesheet" href="{{ ASSET_URL }}" />{% endassets %}
     <title>{{title}}</title>
   </head>
   <body>
-    2
+    <header class="navbar topnav">
+      <section class="navbar-section">
+        <a href="/" class="btn btn-link">Home</a>
+      </section>
+      <section class="navbar-center">
+        <!-- centered logo or brand -->
+      </section>
+      <section class="navbar-section">
+        <a href="//github.com/greenglobal/face-recognition-demo" class="btn btn-link">GitHub</a>
+      </section>
+    </header>
+    <div class="container">
+      <div class="panel">
+
+        <ul class="tab tab-block">
+          <li class="tab-item">
+            <a href="/" class="btn btn-link">Home</a>
+          </li>
+          <li class="tab-item active">
+            <a href="/object" class="btn btn-link">Object</a>
+          </li>
+        </ul>
+
+        <div class="panel-header">
+          <div class="panel-title">Something new here</div>
+        </div>
+        <div class="panel-body">
+          <!-- contents -->
+          B
+        </div>
+        <div class="panel-footer">
+          <!-- buttons or inputs -->
+          C
+        </div>
+      </div>
+    </div>
   </body>
 </html>
