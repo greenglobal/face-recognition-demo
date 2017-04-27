@@ -1,2 +1,3 @@
 tinydb
-bottle
+Flask
+Flask-Assets

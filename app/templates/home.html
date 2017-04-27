@@ -1,0 +1,25 @@
+{% extends "layout.html" %}
+{% block body %}
+  <div class="panel">
+    <div class="panel-header">
+      <div class="panel-title">Upload image to recognize</div>
+    </div>
+    <div class="panel-body">
+      <div class="columns">
+        <div class="column col-9 col-sm-12">
+          <div class="form-group">
+            <div class="col-12">
+              <label class="form-label" for="input-example-16">Choose image</label>
+            </div>
+            <div class="col-12">
+              <input class="form-input" type="file" id="input-example-16" value="">
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="panel-footer">
+      <button class="btn btn-primary btn-lg">Start recognizing</button>
+    </div>
+  </div>
+{% endblock %}
