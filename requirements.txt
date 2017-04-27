@@ -1,3 +1,2 @@
 tinydb
 Flask
-Flask-Assets

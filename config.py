@@ -1,8 +1,7 @@
 from os import environ
 
+ENV = environ['APP_ENV']
+PORT = int(environ['APP_PORT'])
 
-class config:
-  def __init__(self):
-    self.ENV = environ['APP_ENV']
-    self.PORT = environ['APP_PORT']
+DEBUG = ENV != 'production'
 
