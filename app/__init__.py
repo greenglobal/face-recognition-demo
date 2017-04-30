@@ -1,8 +1,9 @@
 ''' *** '''
 # app init
-
-from flask import Flask, url_for, render_template
+from os import path
+from flask import Flask, request, redirect, jsonify, url_for, render_template, send_from_directory
 from flask_assets import Bundle, Environment
+from werkzeug.utils import secure_filename
 
 # Define the WSGI application object
 app = Flask(__name__, static_url_path='/static')
@@ -19,6 +20,7 @@ bundles = {
   ),
   'common_js': Bundle(
     'js/vendor/qwest.min.js',
+    'js/vendor/vue.min.js',
     'js/vendor/doc.min.js',
     'js/app.js',
     output='gen/main.js'
@@ -28,6 +30,14 @@ bundles = {
 assets = Environment(app)
 
 assets.register(bundles)
+
+def allowed_file(filename):
+  return '.' in filename and \
+    filename.rsplit('.', 1)[1].lower() in app.config['ALLOWED_EXTENSIONS']
+
+@app.route('/favicon.ico')
+def favicon():
+  return send_from_directory(path.join(app.root_path, 'static'), 'favicon.ico', mimetype='image/vnd.microsoft.icon')
 
 @app.route('/')
 def home():
@@ -40,8 +50,24 @@ def people():
 
 
 @app.route('/css/<path:path>')
-def static_file(path):
-  return app.send_static_file('css/' + path)
+def static_file(loca):
+  return app.send_static_file('css/' + loca)
+
+@app.route('/upload', methods=['POST'])
+def upload_file():
+  fileToSave = request.files['fileToReco']
+  if fileToSave and fileToSave.filename == '':
+    return jsonify(
+      error=1,
+      message='No file to save'
+    )
+  if allowed_file(fileToSave.filename):
+    filename = secure_filename(fileToSave.filename)
+    fileToSave.save(path.join(app.config['UPLOAD_FOLDER'], filename))
+    return jsonify(
+      error=0,
+      name=filename
+    )
 
 @app.errorhandler(404)
 def page_not_found(error):

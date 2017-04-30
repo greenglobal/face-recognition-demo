@@ -15,13 +15,36 @@
         <tbody>
           <tr>
             <td>The Shawshank Redemption</td>
-            <td>Crime, Drama</td>
+            <td>
+              <figure class="avatar avatar-lg">
+                <img src="https://picturepan2.github.io/spectre/img/avatar-2.png" />
+              </figure>
+            </td>
           </tr>
         </tbody>
       </table>
     </div>
     <div class="panel-footer">
-      Add more people
+      <a @click="toggleDialog" class="ctrl">Add more people</a>
+    </div>
+  </div>
+  <div class="modal" v-bind:class="{ active: isDialogOpened }">
+    <div class="modal-overlay" @click="toggleDialog"></div>
+    <div class="modal-container">
+      <div class="modal-header">
+        <button class="btn btn-clear float-right" @click="toggleDialog"></button>
+        <div class="modal-title">Enter person name:</div>
+      </div>
+      <div class="modal-body">
+        <div class="content">
+          <form id="formAddPeople">
+            <div class="form-group">
+              <input class="form-input" type="text" id="inputName" placeholder="Name" />
+            </div>
+          </form>
+          <br>
+        </div>
+      </div>
     </div>
   </div>
 {% endblock %}

@@ -9,17 +9,71 @@
         <div class="column col-9 col-sm-12">
           <div class="form-group">
             <div class="col-12">
-              <label class="form-label" for="input-example-16">Choose image</label>
+              <label class="form-label"><i>Choose image:</i></label>
             </div>
             <div class="col-12">
-              <input class="form-input" type="file" id="input-example-16" value="">
+              <input class="form-input" type="file" id="fileToReco" value="">
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="columns">
+        <div class="column col-9 col-sm-12">
+          <div class="form-group">
+            <div class="col-12">
+              <label class="form-label"><i>Uploading:</i></label>
+            </div>
+            <div class="col-12">
+              <div class="bar bar-sm">
+                <div class="bar-item" role="progressbar" v-bind:style="uploadProgress" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="columns">
+        <div class="column col-9 col-sm-12">
+          <div class="form-group">
+            <div class="col-12">
+              <label class="form-label"><i>Recognizing:</i></label>
+            </div>
+            <div class="col-12">
+              <div class="bar bar-sm">
+                <div class="bar-item" role="progressbar" v-bind:style="recognitionProgress"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="columns">
+        <div class="column col-9 col-sm-12">
+          <div class="form-group">
+            <div class="col-12">
+              <label class="form-label"><i>Result:</i></label>
+            </div>
+            <div class="col-12 hide" v-if="entry.name">
+              It looks like there is
+              <label class="chip">
+                <img :src="entry.image" class="avatar avatar-sm">
+                <span v-html="entry.name"></span>
+              </label>
+              in the uploaded picture.
+            </div>
+            <div class="col-12" v-else>
+              <div class="hide" v-if="isProcessing">
+                Still working...
+              </div>
+              <div v-else>
+                Nothing founded.
+              </div>
             </div>
           </div>
         </div>
       </div>
     </div>
     <div class="panel-footer">
-      <button class="btn btn-primary btn-lg">Start recognizing</button>
+      <br>
+      <button class="btn btn-primary btn-lg" @click="startProcess" v-bind:class="{ loading: isProcessing }">Start process</button>
     </div>
   </div>
 {% endblock %}
