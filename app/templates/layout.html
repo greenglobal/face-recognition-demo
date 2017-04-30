@@ -3,12 +3,13 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="shortcut icon" href="favicon.ico">
     {% assets "common_css" %}<link rel="stylesheet" href="{{ ASSET_URL }}" />{% endassets %}
     <title>{{title}}</title>
   </head>
-  <body id="app">
+  <body>
     {% include 'common/header.html' %}
-    <main class="container">
+    <main class="container" id="app">
       {% block body %}{% endblock %}
     </main>
     {% assets "common_js" %}<script type="text/javascript" src="{{ ASSET_URL }}"></script>{% endassets %}

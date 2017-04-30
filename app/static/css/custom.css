@@ -12,3 +12,8 @@
     margin: auto;
     border: none;
   }
+
+a.ctrl {
+  cursor: pointer;
+  text-decoration: underline;
+}
